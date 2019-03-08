@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{% block title %} Movie Database {% endblock %}</title>
+    {#<link href="http://akveo.com/blur-admin/styles/app-bce21c2366.css" rel="stylesheet" crossorigin="anonymous">#}
+    {#<link href="http://akveo.com/blur-admin/styles/vendor-2cae343ef1.css" rel="stylesheet" crossorigin="anonymous">#}
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+          integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+</head>
+<body>
+
+
+<div class="container">
+    <nav class="nav">
+        <div class="navbar-brand">Site Branding</div>
+        <a href="{% url 'fixtures:MovieList' %}">Movies</a>
+    </nav>
+</div>
+
+<div class="container">
+    <div>
+        <div class="row">
+            <div class="col-sm-8">
+                {% block main %} {% endblock %}
+            </div>
+            <div class="col-sm-3 offset-sm-1">
+                {% block sidebar %} {% endblock %}
+            </div>
+        </div>
+    </div>
+</div>
+
+</body>
+</html>

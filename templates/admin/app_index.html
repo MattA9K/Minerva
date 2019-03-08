@@ -1,0 +1,37 @@
+{% extends "admin/app_index.html" %}
+
+
+
+
+
+
+
+{% block sidebar %}
+    {{ block.super }}
+    <style>
+        body {
+            color: #00ff00 !important;
+            background: #1a1e1b !important;
+        }
+
+        thead th, tfoot td {
+            color: #00ff00 !important;
+            background: #1a1e1b !important;
+        }
+
+        tr.alt {
+            color: #00ff00 !important;
+            background: #1a1e1b !important;
+        }
+
+        .row1 {
+            color: #00ff00 !important;
+            background: #0a0c0b !important;
+        }
+
+        .row2 {
+            color: #00ff00 !important;
+            background: #0f1e0f !important;
+        }
+    </style>
+{% endblock %}

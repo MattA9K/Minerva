@@ -1,0 +1,61 @@
+{% extends "admin/change_list.html" %}
+
+
+
+
+
+
+
+{% block sidebar %}
+    {{ block.super }}
+    <style>
+        body {
+            color: #00ff00 !important;
+            background: #1a1e1b !important;
+        }
+
+        thead th, tfoot td {
+            color: #00ff00 !important;
+            background: #1a1e1b !important;
+        }
+
+        tr.alt {
+            color: #00ff00 !important;
+            background: #1a1e1b !important;
+        }
+
+        .row1 {
+            color: #00ff00 !important;
+            background: #000000 !important;
+        }
+
+        .row2 {
+            color: #00ff00 !important;
+            background: #091309 !important;
+        }
+
+        .paginator {
+            color: #00ff00 !important;
+            background: #183018 !important;
+        }
+
+        .actions {
+            color: #00ff00 !important;
+            background: #122412 !important;
+        }
+
+        a:link, a:visited {
+            color: #00ff74;
+            text-decoration: none;
+        }
+
+        a:link {
+            color: #00ff00;
+            text-decoration: none;
+        }
+    </style>
+    <div>
+        <h1>Extra links</h1>
+        <a href="/admin/extra/">My extra link</a>
+    </div>
+{% endblock %}
