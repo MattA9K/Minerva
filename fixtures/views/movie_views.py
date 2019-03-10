@@ -2,7 +2,7 @@
 from django.urls import reverse
 from django.views.generic import (ListView, DetailView, )
 
-from fixtures.forms import VoteForm
+from fixtures.forms import (VoteForm, )
 from fixtures.models import (Movie, Vote, )
 
 
