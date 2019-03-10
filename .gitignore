@@ -185,3 +185,9 @@ fabric.properties
 # Editor-based Rest Client
 .idea/httpRequests
 
+.idea/
+fixtures/migrations/0001_initial.py
+fixtures/migrations/0002_auto_20190308_1700.py
+fixtures/migrations/__init__.py
+security/migrations/
+styl/

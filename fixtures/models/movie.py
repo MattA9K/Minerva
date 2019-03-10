@@ -4,7 +4,7 @@ from .person import Person
 
 
 class MovieManager(models.Manager):
-    def all_with_related(self):
+    def all_with_related_persons(self):
         qs = self.get_queryset()
         qs = qs.select_related('director')
         qs = qs.prefetch_related(
@@ -20,11 +20,11 @@ class Movie(models.Model):
     class Meta:
         ordering = ('-year', 'title')
 
-    NOT_RATED = 0
+    NOT_RATED: int = 0
     RATED_G = 1
     RATED_PG = 2
     RATED_R = 3
-    RATINGS = (
+    RATINGS: (int, str) = (
         (NOT_RATED, 'NR - Not Rated'),
         (RATED_G, 'G - General Audience'),
         (RATED_PG, 'PG - Parental Guidance Suggested'),
