@@ -11,13 +11,28 @@
 </head>
 <body>
 
+<nav class="navbar navbar-default navbar-static-top">
+    <div class="container">
+        <div class="navbar-header">
 
-<div class="container">
-    <nav class="nav">
-        <div class="navbar-brand">Site Branding</div>
-        <a href="{% url 'fixtures:MovieList' %}">Movies</a>
-    </nav>
-</div>
+            <div class="navbar-brand">Site Branding</div>
+
+        </div>
+        <ul class="nav nav-pills">
+            <li role="presentation">
+                <button class="btn btn-primary navbar-btn">
+                    Sign in
+                </button>
+            </li>
+            <li role="presentation">
+                <button type="submit" class="btn btn-info navbar-btn">
+                    <a href="{% url 'fixtures:MovieList' %}">Movies</a>
+
+                </button>
+            </li>
+        </ul>
+    </div>
+</nav>
 
 <div class="container">
     <div>

@@ -1,4 +1,4 @@
-from .movie import Movie, Role
+from .movie import Movie, Role, MovieManager
 from .movie_image_upload import MovieImage
-from .person import Person
-from .vote import Vote
+from .person import Person, PersonManager
+from .vote import Vote, VoteManager

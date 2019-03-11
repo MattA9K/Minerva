@@ -1,24 +1,31 @@
 from django.urls import path
 
 from fixtures.views import (
-    MovieList, MovieDetail, UpdateVote, CreateVote,
+    MovieList, MovieDetail, UpdateVote, CreateVote, MovieImageUpload,
 )
 
 app_name = 'fixtures'
 urlpatterns = [
     # Movie Views:
-    path('',
+    path('movie',
          MovieList.as_view(),
          name='MovieList'),
     path('<int:pk>',
          MovieDetail.as_view(),
          name='MovieDetail'),
 
+
     # Vote Views
-    path('movie/<int:movie_id>/vote',
+    path('<int:movie_id>/vote',
+         CreateVote.as_view(),
+         name='CreateVote'),
+    path('movie/<int:movie_id>/vote/<int:pk>',
          UpdateVote.as_view(),
          name='UpdateVote'),
-    path('movie/<int:movie_id>/vote/<int:pk>',
-         CreateVote.as_view(),
-         name='UpdateVote'),
+
+    # Upload Views
+    path('movie/<int:movie_id>/image/upload',
+         MovieImageUpload.as_view(),
+         name='MovieImageUpload'),
+
 ]

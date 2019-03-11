@@ -10,6 +10,10 @@ class MovieList(ListView):
     model = Movie
 
 
+class TopMovies(ListView):
+    template_name = 'fixtures/top_movies_list.html'
+    queryset = Movie.objects.top_movies(limit=10)
+
 class MovieDetail(DetailView):
     queryset = (
         Movie.objects.all_with_related_persons_and_score()

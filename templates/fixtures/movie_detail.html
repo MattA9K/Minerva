@@ -53,12 +53,14 @@
             </form>
         </div>
     {% endif %}
+
     {#    movie score   #}
     <div>
         <h2>
             Score: {{ object.score|default_if_none:"TBD" }}
         </h2>
     </div>
+
     {#    voting form   #}
     <div>
         {% if vote_form %}
