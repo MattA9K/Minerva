@@ -5,8 +5,18 @@
     <title>{% block title %} Movie Database {% endblock %}</title>
     {#<link href="http://akveo.com/blur-admin/styles/app-bce21c2366.css" rel="stylesheet" crossorigin="anonymous">#}
     {#<link href="http://akveo.com/blur-admin/styles/vendor-2cae343ef1.css" rel="stylesheet" crossorigin="anonymous">#}
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
-          integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="/resources/themes/DarkTemplar/css/black-dashboard.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="apple-touch-icon" sizes="76x76" href="/resources/themes/DarkTemplar/img/apple-icon.png">
+    <link rel="icon" type="image/png" href="/resources/themes/DarkTemplar/favicon.png">
+
+    <!--     Fonts and icons     -->
+    <link href="https://fonts.googleapis.com/css?family=Poppins:200,300,400,600,700,800" rel="stylesheet"/>
+    <link href="https://use.fontawesome.com/releases/v5.0.6/css/all.css" rel="stylesheet">
+    <!-- Nucleo Icons -->
+    <link href="/resources/themes/DarkTemplar/css/nucleo-icons.css" rel="stylesheet"/>
+    <!-- CSS Files -->
+    <link href="/resources/themes/DarkTemplar/css/black-dashboard.css?v=1.0.0" rel="stylesheet"/>
 
 </head>
 <body>
@@ -19,20 +29,28 @@
 
         </div>
         <ul class="nav nav-pills">
+            {% if user.is_authenticated %}
+                <li role="presentation">
+                    <a href="{% url 'security:login' %}" class="button btn btn-primary navbar-btn">
+                        {{ user.username }}
+                    </a>
+                </li>
+            {% else %}
+                <li role="presentation">
+                    <a href="{% url 'security:login' %}" class="button btn btn-primary navbar-btn">
+                        Sign in
+                    </a>
+                </li>
+            {% endif %}
             <li role="presentation">
-                <button class="btn btn-primary navbar-btn">
-                    Sign in
-                </button>
-            </li>
-            <li role="presentation">
-                <button type="submit" class="btn btn-info navbar-btn">
-                    <a href="{% url 'fixtures:MovieList' %}">Movies</a>
-
-                </button>
+                <a class="button btn btn-info" href="{% url 'fixtures:MovieList' %}">Movies</a>
             </li>
         </ul>
     </div>
 </nav>
+
+{% block navbar %}
+{% endblock %}
 
 <div class="container">
     <div>

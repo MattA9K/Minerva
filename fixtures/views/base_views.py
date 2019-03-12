@@ -2,17 +2,27 @@
 from django.urls import reverse
 from django.views.generic import (ListView, DetailView, )
 
-from fixtures.forms import (VoteForm, )
+from fixtures.forms import (VoteForm, MovieImageForm, )
 from fixtures.models import (Movie, Vote, )
 
 
 class MovieList(ListView):
     model = Movie
 
+    def get_context_data(self, object_list, **kwargs):
+        ctx = super().get_context_data()
+        ctx['user'] = self.request.user
+        return ctx
+
 
 class TopMovies(ListView):
     template_name = 'fixtures/top_movies_list.html'
     queryset = Movie.objects.top_movies(limit=10)
+
+    def get_context_data(self, object_list, **kwargs):
+        ctx = super().get_context_data()
+        ctx['user'] = self.request.user
+        return ctx
 
 class MovieDetail(DetailView):
     queryset = (
@@ -40,6 +50,13 @@ class MovieDetail(DetailView):
                     )
                 )
             vote_form = VoteForm(instance=vote)
+            image_form = self.movie_image_form()
             ctx['vote_form'] = vote_form
+            ctx['image_form'] = image_form
             ctx['vote_form_url'] = vote_form_url
         return ctx
+
+    def movie_image_form(self):
+        if self.request.user.is_authenticated:
+            return MovieImageForm()
+        return None
