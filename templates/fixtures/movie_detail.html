@@ -42,7 +42,7 @@
             <h2>Upload New Image</h2>
             <form method="post"
                   enctype="multipart/form-data"
-                  action="{% url 'core:MovieImageUpload' movie_id=object.id %}">
+                  action="{% url 'fixtures:MovieImageUpload' movie_id=object.id %}">
                 {% csrf_token %}
                 {{ image_form.as_p }}
                 <p>

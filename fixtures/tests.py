@@ -1,8 +1,9 @@
-from core.models import Movie
-from core.views import MovieList
 from django.test import TestCase
 from django.test.client import RequestFactory
 from django.urls.base import reverse
+
+from fixtures.models import Movie
+from fixtures.views import MovieList
 
 
 class MovieListPagination(TestCase):
@@ -14,13 +15,16 @@ class MovieListPagination(TestCase):
 
     def setUp(self):
         for n in range(15):
-            Movie.objects.create(
+            dummy_movie = Movie(
                 title='Title {}'.format(n),
                 year=1990 + n,
                 runtime=100,
             )
+            dummy_movie.save()
+
 
     def testFirstPage(self):
+        # print("\033]34m testFirstPage \033]0m " + str(0))
         movie_list_path = reverse('fixtures:MovieList')
         request = RequestFactory().get(path=movie_list_path)
         response = MovieList.as_view()(request)

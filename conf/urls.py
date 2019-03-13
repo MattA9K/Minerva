@@ -27,6 +27,6 @@ MEDIA_FILE_PATHS = static(
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-                  path('', include('fixtures.urls', namespace='fixtures')),
+                  path('movies/', include('fixtures.urls', namespace='fixtures')),
     path('security/', include('security.urls', namespace='security')),
               ] + MEDIA_FILE_PATHS

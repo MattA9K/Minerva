@@ -9,10 +9,10 @@ from fixtures.models import (Movie, Vote, )
 class MovieList(ListView):
     model = Movie
 
-    def get_context_data(self, object_list, **kwargs):
-        ctx = super().get_context_data()
-        ctx['user'] = self.request.user
-        return ctx
+    # def get_context_data(self, object_list, **kwargs):
+    #     ctx = super().get_context_data()
+    #     ctx['user'] = self.request.user
+    #     return ctx
 
 
 class TopMovies(ListView):

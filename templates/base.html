@@ -5,7 +5,7 @@
     <title>{% block title %} Movie Database {% endblock %}</title>
     {#<link href="http://akveo.com/blur-admin/styles/app-bce21c2366.css" rel="stylesheet" crossorigin="anonymous">#}
     {#<link href="http://akveo.com/blur-admin/styles/vendor-2cae343ef1.css" rel="stylesheet" crossorigin="anonymous">#}
-    <link rel="stylesheet" href="/resources/themes/DarkTemplar/css/black-dashboard.css">
+
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <link rel="apple-touch-icon" sizes="76x76" href="/resources/themes/DarkTemplar/img/apple-icon.png">
     <link rel="icon" type="image/png" href="/resources/themes/DarkTemplar/favicon.png">
@@ -14,9 +14,9 @@
     <link href="https://fonts.googleapis.com/css?family=Poppins:200,300,400,600,700,800" rel="stylesheet"/>
     <link href="https://use.fontawesome.com/releases/v5.0.6/css/all.css" rel="stylesheet">
     <!-- Nucleo Icons -->
-    <link href="/resources/themes/DarkTemplar/css/nucleo-icons.css" rel="stylesheet"/>
+    <link href="/static/themes/DarkTemplar/css/nucleo-icons.css" rel="stylesheet"/>
     <!-- CSS Files -->
-    <link href="/resources/themes/DarkTemplar/css/black-dashboard.css?v=1.0.0" rel="stylesheet"/>
+    <link href="/static/themes/DarkTemplar/css/black-dashboard.min.css" rel="stylesheet"/>
 
 </head>
 <body>
@@ -31,9 +31,13 @@
         <ul class="nav nav-pills">
             {% if user.is_authenticated %}
                 <li role="presentation">
-                    <a href="{% url 'security:login' %}" class="button btn btn-primary navbar-btn">
-                        {{ user.username }}
-                    </a>
+
+                    <p class="navbar-text">
+                        Logged in as {{ user.username }}.
+                        <a href="{% url 'security:logout' %}" class="nav-link">
+                            Logout here.
+                        </a>
+                    <p>
                 </li>
             {% else %}
                 <li role="presentation">
@@ -49,21 +53,29 @@
     </div>
 </nav>
 
+<!--BLOCK FOR NAVIGATION-->
 {% block navbar %}
-{% endblock %}
+{% endblock %}`
 
 <div class="container">
     <div>
         <div class="row">
             <div class="col-sm-8">
+                <!--BLOCK FOR BASE VIEWS-->
                 {% block main %} {% endblock %}
             </div>
             <div class="col-sm-3 offset-sm-1">
+                <!--BLOCK FOR SIDEBAR-->
                 {% block sidebar %} {% endblock %}
             </div>
         </div>
     </div>
 </div>
+
+
+<!--BLOCK FOR EXTRA/FEATURED-->
+<!--TODO: move this block to its own template-->
+
 
 </body>
 </html>
