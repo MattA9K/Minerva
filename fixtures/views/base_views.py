@@ -1,10 +1,22 @@
 # Author - Matt Andrzejczuk
+
+# NO TEMPLATES:
+from django.http import HttpResponse
+from django.template import loader
+# GENERIC:
 from django.urls import reverse
 from django.views.generic import (ListView, DetailView, )
 
 from fixtures.forms import (VoteForm, MovieImageForm, )
 from fixtures.mixins import CachePageVaryOnCookieMixin
 from fixtures.models import (Movie, Vote, )
+
+
+def home_page(request):
+    template = loader.get_template("home_page.html")
+    visitor = request.META
+    context = {"visitor": visitor}
+    return HttpResponse(template.render(context))
 
 
 class MovieList(CachePageVaryOnCookieMixin, ListView):

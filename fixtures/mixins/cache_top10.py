@@ -2,9 +2,10 @@
 from django.core.cache import caches
 from django.views.decorators.cache import cache_page
 from django.views.decorators.vary import vary_on_cookie
+from django.views.generic import ListView
 
 
-class CachePageVaryOnCookieMixin:
+class CachePageVaryOnCookieMixin(ListView):
     """
     Mixin caching a single page.
 

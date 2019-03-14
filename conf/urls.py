@@ -20,6 +20,8 @@ from django.conf.urls.static import static
 from django.contrib import admin
 from django.urls import path, include
 
+from fixtures.views import home_page
+
 MEDIA_FILE_PATHS = static(
     settings.MEDIA_URL,
     document_root=settings.MEDIA_ROOT
@@ -31,12 +33,10 @@ urlpatterns = [
     path('__debug__/', include(debug_toolbar.urls)),
 
     # PUBLIC
+    path('', home_page, name="index"),
     path('movies/', include('fixtures.urls', namespace='fixtures')),
 
     # USER AUTH
     path('security/', include('security.urls', namespace='security')),
 ]
 urlpatterns += MEDIA_FILE_PATHS
-
-if settings.DEBUG == False:
-    urlpatterns[1] = None

@@ -15,7 +15,7 @@ urlpatterns = [
          name='MovieDetail'),
     path('top10/',
          TopMovies.as_view(),
-         name='Top10'),
+         name='TopMovies'),
 
 
     # Vote Views
