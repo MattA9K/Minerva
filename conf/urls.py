@@ -32,6 +32,8 @@ urlpatterns = [
 
     # PUBLIC
     path('movies/', include('fixtures.urls', namespace='fixtures')),
+
+    # USER AUTH
     path('security/', include('security.urls', namespace='security')),
 ]
 urlpatterns += MEDIA_FILE_PATHS

@@ -1,7 +1,7 @@
 from django.urls import path
 
 from fixtures.views import (
-    MovieList, MovieDetail, UpdateVote, CreateVote, MovieImageUpload,
+    MovieList, MovieDetail, TopMovies, UpdateVote, CreateVote, MovieImageUpload,
 )
 
 app_name = 'fixtures'
@@ -13,6 +13,9 @@ urlpatterns = [
     path('<int:pk>',
          MovieDetail.as_view(),
          name='MovieDetail'),
+    path('top10/',
+         TopMovies.as_view(),
+         name='Top10'),
 
 
     # Vote Views

@@ -3,12 +3,13 @@ from django.urls import reverse
 from django.views.generic import (ListView, DetailView, )
 
 from fixtures.forms import (VoteForm, MovieImageForm, )
+from fixtures.mixins import CachePageVaryOnCookieMixin
 from fixtures.models import (Movie, Vote, )
 
 
-class MovieList(ListView):
+class MovieList(CachePageVaryOnCookieMixin, ListView):
     model = Movie
-
+    paginate_by = 10
     # def get_context_data(self, object_list, **kwargs):
     #     ctx = super().get_context_data()
     #     ctx['user'] = self.request.user

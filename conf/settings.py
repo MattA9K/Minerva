@@ -77,6 +77,30 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
+CSRF_USE_SESSIONS = True
+CACHES = {
+    'default': {
+        'BACKEND': 'django.core.cache.backends.locmem.LocMemCache',
+        'LOCATION': 'default-locmemcache',
+        'TIMEOUT': 5,  # seconds
+    }
+    # 'developer_mode': {
+    #     'BACKEND': 'django.core.cache.backends.dummy.DummyCache',
+    # },
+    # 'cache_RAM': {
+    #     'BACKEND': 'django.core.cache.backends.locmem.LocMemCache',
+    #     'LOCATION': 'tempcache'
+    # },
+    # 'local_SSD': {
+    #     'BACKEND': 'django.core.cache.backends.filebased.FileBasedCache',
+    #     'LOCATION': os.path.join(BASE_DIR, '../file_cache'),
+    # },
+    # 'SQL': {
+    #     'BACKEND': 'django.core.cache.backends.db.DatabaseCache',
+    #     'LOCATION': 'django_cache_table'
+    # },
+}
+
 
 LANGUAGE_CODE = 'en-us'
 TIME_ZONE = 'UTC'
