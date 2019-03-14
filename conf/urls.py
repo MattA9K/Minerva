@@ -14,9 +14,9 @@ Including another URLconf
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
 
+import debug_toolbar
 from django.conf import settings
 from django.conf.urls.static import static
-
 from django.contrib import admin
 from django.urls import path, include
 
@@ -26,7 +26,15 @@ MEDIA_FILE_PATHS = static(
 )
 
 urlpatterns = [
+    # ADMIN / DEV
     path('admin/', admin.site.urls),
-                  path('movies/', include('fixtures.urls', namespace='fixtures')),
+    path('__debug__/', include(debug_toolbar.urls)),
+
+    # PUBLIC
+    path('movies/', include('fixtures.urls', namespace='fixtures')),
     path('security/', include('security.urls', namespace='security')),
-              ] + MEDIA_FILE_PATHS
+]
+urlpatterns += MEDIA_FILE_PATHS
+
+if settings.DEBUG == False:
+    urlpatterns[1] = None
