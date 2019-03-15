@@ -5,7 +5,7 @@ from django.views.decorators.vary import vary_on_cookie
 from django.views.generic import ListView
 
 
-class CachePageVaryOnCookieMixin(ListView):
+class CachePageVaryOnCookieMixin():
     """
     Mixin caching a single page.
 

@@ -19,7 +19,7 @@ def home_page(request):
     return HttpResponse(template.render(context))
 
 
-class MovieList(CachePageVaryOnCookieMixin, ListView):
+class MovieList(ListView):
     model = Movie
     paginate_by = 10
     # def get_context_data(self, object_list, **kwargs):
@@ -33,7 +33,7 @@ class TopMovies(ListView):
     queryset = Movie.objects.top_movies(limit=10)
 
     def get_context_data(self, object_list, **kwargs):
-        ctx = super().get_context_data()
+        ctx = super().get_context_data(object_list, kwargs)
         ctx['user'] = self.request.user
         return ctx
 
