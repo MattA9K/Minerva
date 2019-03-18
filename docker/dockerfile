@@ -31,3 +31,13 @@ RUN ln -s /etc/nginx/sites-available/minerva.nginx.conf /etc/nginx/sites-enabled
 COPY runit/nginx /etc/service/nginx
 RUN chmod +x /etc/service/nginx/run
 
+
+# CONFIGURE uWSGI
+COPY uwsgi/mymdb.ini /etc/uwsgi/apps-enabled/minerva.ini
+RUN mkdir -p /var/log/uwsgi/
+RUN touch /var/log/uwsgi/
+RUN chown www-data /var/log/uwsgi/mymdb.log
+RUN chown www-data /var/log/mymdb.log
+
+COPY runit/uwsgi /etc/service/uwsgi
+RUN chmod +x /etc/service/uwsgi/run
