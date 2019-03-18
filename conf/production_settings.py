@@ -3,13 +3,13 @@ DEVELOPED BY: MATT ANDRZEJCZUK
 """
 import os
 
-
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-SECRET_KEY = '6li%=%9*@1h3f&o5hb@z%-0q9bh_lek*o$%bhj2rmi7n!%9n3-'
-DEBUG = True
-ALLOWED_HOSTS = []
+SECRET_KEY = os.getenv('DJANGO_SECRET_KEY')
+DEBUG = False
+ALLOWED_HOSTS = [
+    os.getenv('DJANGO_ALLOWED_HOSTS')
+]
 LOGIN_REDIRECT_URL = 'fixtures:MovieList'
-
 
 INSTALLED_APPS = [
     'django.contrib.admin',
@@ -21,13 +21,12 @@ INSTALLED_APPS = [
 
     # 3RD PARTY DJANGO MUST-HAVES:
     'django_extensions',
-    'debug_toolbar',
+    # 'debug_toolbar',
 
     # PROJECT APPS:
     'fixtures',
     'security',
 ]
-
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -101,13 +100,11 @@ CACHES = {
     # },
 }
 
-
 LANGUAGE_CODE = 'en-us'
 TIME_ZONE = 'UTC'
 USE_I18N = True
 USE_L10N = True
 USE_TZ = True
-
 
 STATIC_URL = '/static/'
 STATIC_ROOT = BASE_DIR + '/static'
@@ -151,3 +148,7 @@ DEBUG_TOOLBAR_CONFIG = {
     'SKIP_TEMPLATE_PREFIXES': ('django/forms/widgets/', 'admin/widgets/'),
     'SQL_WARNING_THRESHOLD': 500
 }
+# Debug Config:
+INTERNAL_IPS = [
+    '127.0.0.1',
+]
