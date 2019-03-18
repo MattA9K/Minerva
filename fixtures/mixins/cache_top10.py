@@ -4,6 +4,8 @@ from django.views.decorators.cache import cache_page
 from django.views.decorators.vary import vary_on_cookie
 from django.views.generic import ListView
 
+from pyink import ink
+
 
 class CachePageVaryOnCookieMixin():
     """
@@ -20,6 +22,7 @@ class CachePageVaryOnCookieMixin():
 
     @classmethod
     def get_timeout(cls):
+        ink.p("CachePageVaryOnCookieMixin get_timeout", ink.BG_BLUE, ink.ENDC + "\n")
         if hasattr(cls, 'timeout'):
             return cls.timeout
         cache = caches[cls.cache_name]
@@ -27,6 +30,7 @@ class CachePageVaryOnCookieMixin():
 
     @classmethod
     def as_view(cls, *args, **kwargs):
+        ink.p("CachePageVaryOnCookieMixin as_view", ink.BG_BLUE, ink.ENDC + "\n")
         view = super().as_view(
             *args, **kwargs
         )

@@ -11,6 +11,10 @@ from fixtures.forms import (VoteForm, MovieImageForm, )
 from fixtures.mixins import CachePageVaryOnCookieMixin
 from fixtures.models import (Movie, Vote, )
 
+from pyink import ink
+
+
+
 
 def home_page(request):
     template = loader.get_template("home_page.html")
@@ -28,13 +32,14 @@ class MovieList(ListView):
     #     return ctx
 
 
-class TopMovies(ListView):
+class TopMovies(CachePageVaryOnCookieMixin, ListView):
     template_name = 'fixtures/top_movies_list.html'
     queryset = Movie.objects.top_movies(limit=10)
 
-    def get_context_data(self, object_list, **kwargs):
-        ctx = super().get_context_data(object_list, kwargs)
+    def get_context_data(self, **kwargs):
+        ctx = super().get_context_data(**kwargs)
         ctx['user'] = self.request.user
+        ink.p("TopMovies", ink.BG_PURPLE, ink.ENDC + "\n")
         return ctx
 
 class MovieDetail(DetailView):
